@@ -1,51 +1,36 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# DPS1
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+https://github.com/gmsantos/projeto-dps
 
-## About Laravel
+Alunos:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+    Daniel Constantino RA: 580996
+    Gabriel Machado RA: 581062
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How to use
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+1. Install Docker in your host machine. Follow [docker documentation](https://docs.docker.com/engine/installation/) and don't forget the [optional steps](https://docs.docker.com/engine/installation/linux/linux-postinstall/) if running on Linux.
+1. If you are running on Windows, make sure your [system met the minimum requirements](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
+1. Run `docker-compose pull` to download container images
+1. Execute `docker-compose run php composer install` to download dependencies files.
+1. Copy the content of .env.example to .env to setup database configurations.
+1. Run `docker-compose run php artisan key:generate` on the first time to create criptography keys. 
+1. Initialize database with `docker-compose run php artisan migrate:refresh --seed`.
+1. Launch with `docker-compose up web` and open your browser.
+1. The default address is `http://localhost:8080` but this can be changed in `docker-compose.yml`.
+1. There are two pre-cadastred users: `joao` and `juca`, with the credentials:
 
-## Learning Laravel
+    email: joao@ufscar.br password: senha123,
+    email: juca@ufscar.br password: senha321
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+## Important notes
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+This project is powered by [Laravel Framework 5.4](https://laravel.com/).
 
-## Laravel Sponsors
+PHP container entrypoint is set to `php`, making easy to run php scripts (e.g: `docker-compose run php artisan`).
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+Database is populated with random values acording to definitions in `database/factories` and `database/seeds`.
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+All application code is inside `app` folder, separeted by namespaces.
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Project views are in `resources/views` folder.
