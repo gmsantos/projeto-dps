@@ -6,6 +6,8 @@ Alunos:
 
     Daniel Constantino RA: 580996
     Gabriel Machado RA: 581062
+    Leandro dos Santos - RA 580970
+    Elivelton Andreati Sorato – RA 545015
 
 ## How to use
 
