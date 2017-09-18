@@ -2,12 +2,35 @@ version: '3.1'
 
 services:
 
-    db:
-        image: mysql
-        ports:
-          - "3306:3306"
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_USER=ufscar
-          - MYSQL_PASSWORD=ufscar
-          - MYSQL_DATABASE=dps
+  web:
+    build: docker/web
+    ports:
+      - "8080:80"
+    volumes:
+      - ".:/var/www/html"
+    depends_on:
+      - db
+
+  cli:
+    build: docker/cli
+    volumes:
+      - ".:/var/www/html"
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=ufscar
+      - MYSQL_PASSWORD=ufscar
+      - MYSQL_DATABASE=dps
+    volumes:
+      - "db:/var/lib/mysql"
+
+volumes:
+
+  db:
+    driver: local
