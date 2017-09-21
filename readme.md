@@ -29,8 +29,6 @@ Alunos:
 
 This project is powered by [Laravel Framework 5.4](https://laravel.com/).
 
-PHP container entrypoint is set to `php`, making easy to run php scripts (e.g: `docker-compose run php php artisan`).
-
 Database is populated with random values acording to definitions in `database/factories` and `database/seeds`.
 
 All application code is inside `app` folder, separeted by namespaces.
