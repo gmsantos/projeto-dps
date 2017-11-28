@@ -26,8 +26,9 @@ class AlterCausesAddUserId extends Migration
      */
     public function down()
     {
-        Schema::table('volunteers', function (Blueprint $table) {
-            $table->dropForeign('causes_user_id_foreign');
+        Schema::table('causes', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
         });
     }
 }

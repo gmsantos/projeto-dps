@@ -26,8 +26,7 @@ class CreateCausesTable extends Migration
             
             $table->integer('volunteer_id')->unsigned();
             $table->foreign('volunteer_id')->references('id')->on('volunteers')->onDelete('cascade');
-        });
-        
+        });        
     }
 
     /**
