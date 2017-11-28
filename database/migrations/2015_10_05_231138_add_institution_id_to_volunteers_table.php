@@ -30,7 +30,7 @@ class AddInstitutionIdToVolunteersTable extends Migration
     public function down()
     {
         Schema::table('volunteers', function (Blueprint $table) {
-            $table->dropForeign('volunteers_institution_id_foreign');
+            $table->dropForeign(['institution_id']);
             $table->dropColumn('institution_id');            
         });
     }
