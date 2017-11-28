@@ -24,9 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Volunteer::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
         'phone' => $faker->phoneNumber,
-        'email' => $faker->email,
         'institution_id' => App\Institution::all()->random()->id,
     ];
 });
@@ -34,7 +32,6 @@ $factory->define(App\Volunteer::class, function (Faker\Generator $faker) {
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Institution::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->company,
         'address' => $faker->streetAddress,
         'city' => $faker->city
     ];
