@@ -11,13 +11,6 @@ services:
     depends_on:
       - db
 
-  cli:
-    build: docker/cli
-    volumes:
-      - ".:/var/www/html"
-    depends_on:
-      - db
-
   db:
     image: mysql
     ports:

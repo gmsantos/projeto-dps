@@ -1,4 +1,4 @@
-# DPS1
+# DPS2
 
 https://github.com/gmsantos/projeto-dps
 
@@ -7,23 +7,21 @@ Alunos:
     Daniel Constantino RA: 580996
     Gabriel Machado RA: 581062
     Leandro dos Santos - RA 580970
-    Elivelton Andreati Sorato – RA 545015
+    Thiago Abdre - RA 579947
 
 ## How to use
 
 1. Install Docker in your host machine. Follow [docker documentation](https://docs.docker.com/engine/installation/) and don't forget the [optional steps](https://docs.docker.com/engine/installation/linux/linux-postinstall/) if running on Linux.
 1. If you are running on Windows, make sure your [system met the minimum requirements](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
-1. Run `docker-compose pull` to download container images
-1. Execute `docker-compose run --rm cli composer install` to download dependencies files.
+1. Run `docker-compose up -d web` to download container images and build the custom ones
+1. Execute `docker-compose exec web composer install` to download dependencies files.
 1. Copy the content of .env.example to .env to setup project enviroment configurations (defaults to docker).
-1. Run `docker-compose run --rm cli php artisan key:generate` on the first time to create criptography keys. 
-1. Initialize database with `docker-compose run --rm cli php artisan migrate:refresh --seed`.
-1. Launch with `docker-compose up web` and open your browser.
+1. Run `docker-compose exec web php artisan key:generate` on the first time to create criptography keys.
+1. Initialize database with `docker-compose exec web php artisan migrate:refresh --seed`.
 1. The default address is `http://localhost:8080` but this can be changed in `docker-compose.yml`.
-1. There are two pre-cadastred users: `joao` and `juca`, with the credentials:
+1. There are a pre-cadastred admin named `joao`, with the credentials:
 
-    email: joao@ufscar.br password: senha123,
-    email: juca@ufscar.br password: senha321
+    email: joao@ufscar.br password: senha123
 
 ## Important notes
 
