@@ -6,9 +6,9 @@ RUN apt-get update && apt-get install -y \
       libpq-dev \
       libmcrypt-dev \
       libsqlite3-dev \
-    && rm -r /var/lib/apt/lists/* \
-    && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
-    && docker-php-ext-install \
+    && rm -r /var/lib/apt/lists/*
+
+RUN docker-php-ext-install \
       intl \
       mbstring \
       mcrypt \

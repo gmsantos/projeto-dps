@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Repository\SocialAccountRepository;
+use Exception;
 use Illuminate\Http\Request;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialAccountController extends Controller
 {
@@ -17,7 +18,7 @@ class SocialAccountController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->scopes(['users:email'])->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -27,9 +28,13 @@ class SocialAccountController extends Controller
      */
     public function handleProviderCallback(SocialAccountRepository $accountRepository, $provider)
     {
-        $user = Socialite::with($provider)->user();
+        //try {
+            $user = Socialite::with($provider)->user();
+        //} catch (Exception $e) {
+        //    return redirect('/login')->withErrors('Ocorreu algum problema. Tente novamente mais tarde');
+        //}
 
-        $authUser = $accountService->findOrCreate(
+        $authUser = $accountRepository->findOrCreate(
             $user,
             $provider
         );
