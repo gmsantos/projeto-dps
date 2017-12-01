@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
       libsqlite3-dev \
     && rm -r /var/lib/apt/lists/*
 
+RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
+
 RUN docker-php-ext-install \
       intl \
       mbstring \
@@ -17,6 +19,9 @@ RUN docker-php-ext-install \
       pdo_sqlite \
       zip \
       opcache
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 # Put apache config for Laravel
 COPY apache2-laravel.conf /etc/apache2/sites-available/laravel.conf
