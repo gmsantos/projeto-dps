@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VolunteerSeeder::class);
         $this->call(CauseSeeder::class);
         $this->call(CauseVolunteerSeeder::class);
+        $this->call(CauseInstitutionSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
