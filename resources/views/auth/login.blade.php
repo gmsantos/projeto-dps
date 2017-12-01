@@ -47,7 +47,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -59,12 +58,15 @@
                                 </a>
                             </div>
                         </div>
-
+                        <hr>
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <a class="btn btn-link" href="/login/facebook">Facebook</a>
-                                <a class="btn btn-link" href="/login/linkedin">LinkedIn</a>
-                                <a class="btn btn-link" href="/login/google">Google</a>
+                                <p>Login com redes sociais</p>
+                            </div>
+                            <div class="col-md-8 col-md-offset-4">
+                                <a class="btn btn-primary" href="/login/facebook">Facebook</a>
+                                <a class="btn btn-info" href="/login/linkedin">LinkedIn</a>
+                                <a class="btn btn-danger" href="/login/google">Google</a>
                             </div>
                         </div>
                     </form>

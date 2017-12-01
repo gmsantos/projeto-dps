@@ -38,19 +38,19 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_ID'),
         'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect'      => 'login/facebook/callback',
+        'redirect'      => env('OAUTH_URL', 'http://localhost:8000') . '/login/facebook/callback',
     ],
 
     'linkedin' => [
         'client_id'     => env('LINKEDIN_ID'),
         'client_secret' => env('LINKEDIN_SECRET'),
-        'redirect'      => 'login/linkedin/callback',
+        'redirect'      => env('OAUTH_URL', 'http://localhost:8000') . '/login/linkedin/callback',
     ],
 
     'google' => [
         'client_id'     => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
-        'redirect'      => 'login/google/callback',
+        'redirect'      => env('OAUTH_URL', 'http://localhost:8000') . '/login/google/callback',
     ],
 
 ];
