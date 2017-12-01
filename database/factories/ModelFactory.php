@@ -26,6 +26,7 @@ $factory->define(App\Volunteer::class, function (Faker\Generator $faker) {
     return [
         'phone' => $faker->phoneNumber,
         'institution_id' => App\Institution::all()->random()->id,
+        'user_id' => App\User::all()->random()->id,
     ];
 });
 
@@ -33,6 +34,7 @@ $factory->define(App\Volunteer::class, function (Faker\Generator $faker) {
 $factory->define(App\Institution::class, function (Faker\Generator $faker) {
     return [
         'address' => $faker->streetAddress,
-        'city' => $faker->city
+        'city' => $faker->city,
+        'user_id' => App\User::all()->random()->id,
     ];
 });
