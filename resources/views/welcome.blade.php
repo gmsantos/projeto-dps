@@ -26,7 +26,7 @@
 
 @section('content')
 <div class="starter-template">
-  <h1>Desenvolvimento de Projeto de Sistemas I</h1>
+  <h1>Desenvolvimento de Projeto de Sistemas II</h1>
   <p class="lead">Projeto Voluntários.</p>
 </div>
 @endsection

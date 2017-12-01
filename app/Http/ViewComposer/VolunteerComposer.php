@@ -20,7 +20,7 @@ class VolunteerComposer
 	
 	public function compose(View $view)
 	{
-		$view->with('institutions', $this->institutions->pluck('name', 'id'));
+		$view->with('institutions', $this->institutions->with('user')->get()->pluck('user.name', 'id'));
 		$view->with('causes', $this->causes->pluck('cause', 'id'));
 	}
 }

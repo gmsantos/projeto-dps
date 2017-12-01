@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Volunteer extends Model
 {
-    protected $fillable = ['name', 'phone', 'email'];
+    protected $fillable = ['phone'];
     
     public function institution()
     {
@@ -17,9 +17,24 @@ class Volunteer extends Model
     {
         return $this->belongsToMany(Cause::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
     public function getCausesListAttribute()
     {
         return $this->causes->pluck('id')->toArray();
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->user->name;
+    }
+
+    public function getEmailAttribute()
+    {
+        return $this->user->email;
     }
 }
