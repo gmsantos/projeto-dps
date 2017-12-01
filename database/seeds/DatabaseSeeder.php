@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    private $toTruncate = ['cause_volunteer', 'institutions', 'volunteers', 'causes', 'users'];
+    private $toTruncate = ['cause_institution', 'cause_volunteer', 'institutions', 'volunteers', 'causes', 'users'];
 
     /**
      * Run the database seeds.
