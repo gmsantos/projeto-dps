@@ -13,10 +13,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $password;
+
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
+        'password' => $password ?: $password = bcrypt('senha123'),
         'remember_token' => str_random(10),
     ];
 });
@@ -26,7 +28,11 @@ $factory->define(App\Volunteer::class, function (Faker\Generator $faker) {
     return [
         'phone' => $faker->phoneNumber,
         'institution_id' => App\Institution::all()->random()->id,
-        'user_id' => App\User::all()->random()->id,
+        'user_id' => function () {
+            return factory(App\User::class)->create([
+                'role' => 'volunteer',
+            ])->id;
+        }
     ];
 });
 
@@ -35,6 +41,11 @@ $factory->define(App\Institution::class, function (Faker\Generator $faker) {
     return [
         'address' => $faker->streetAddress,
         'city' => $faker->city,
-        'user_id' => App\User::all()->random()->id,
+        'user_id' => function () use ($faker) {
+            return factory(App\User::class)->create([
+                'name' => $faker->company,
+                'role' => 'institution',
+            ])->id;
+        }
     ];
 });
