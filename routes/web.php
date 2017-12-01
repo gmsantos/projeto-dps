@@ -30,3 +30,9 @@ Route::resource('institution', 'InstitutionsController');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider')
+    ->where('provider', 'google|facebook|linkedin');
+    
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')
+    ->where('provider', 'google|facebook|linkedin');
