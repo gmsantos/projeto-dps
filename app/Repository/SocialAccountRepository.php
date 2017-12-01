@@ -14,14 +14,8 @@ class SocialAccountRepository
             return $account->user;
         }
 
-        // Is there a existing User with a social email?
-        if (!$user = User::where('email', $providerUser->getEmail())->first()) {
-            // Create a new user with social email
-            $user = User::create([
-                'email' => $providerUser->getEmail(),
-                'name'  => $providerUser->getName(),
-            ]);
-        }
+        // Determine current user or create a new one
+        $user = $this->determineCurrentUser($providerUser);
 
         // Associate social account with user
         $user->accounts()->create([
@@ -41,4 +35,28 @@ class SocialAccountRepository
             ->where('provider_id', $providerUser->getId())
             ->first();
     }
+
+    /**
+     * Try to determine a existing user to associate a Social Account.
+     * First, checks if there are a logged user.
+     * After checks if we have a matching email on our database.
+     * In last case, create a new User with Social Login information.
+     */
+    private function determineCurrentUser($providerUser)
+    {
+        if ($loggedUser = auth()->user()) {
+            return $loggedUser;
+        }
+
+        if ($existingUser = User::where('email', $providerUser->getEmail())->first()) {
+            return $existingUser;
+        }
+
+        // Return a new user
+        return User::create([
+            'email' => $providerUser->getEmail(),
+            'name'  => $providerUser->getName(),
+        ]);
+    }
+
 }

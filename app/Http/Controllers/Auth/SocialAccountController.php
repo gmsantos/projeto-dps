@@ -28,17 +28,15 @@ class SocialAccountController extends Controller
      */
     public function handleProviderCallback(SocialAccountRepository $accountRepository, $provider)
     {
-        //try {
-            $user = Socialite::with($provider)->user();
-        //} catch (Exception $e) {
-        //    return redirect('/login')->withErrors('Ocorreu algum problema. Tente novamente mais tarde');
-        //}
+        try {
+            $socialUser = Socialite::with($provider)->user();
+        } catch (Exception $e) {
+            return redirect('/login')->withErrors('Ocorreu algum problema com a autenticação.');
+        }
 
-        $authUser = $accountRepository->findOrCreate(
-            $user,
-            $provider
-        );
+        $authUser = $accountRepository->findOrCreate($socialUser, $provider);
 
+        // Set as logged user
         auth()->login($authUser, true);
 
         return redirect()->to('/home');
