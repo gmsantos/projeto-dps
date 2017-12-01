@@ -59,6 +59,14 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <a class="btn btn-link" href="/login/facebook">Facebook</a>
+                                <a class="btn btn-link" href="/login/linkedin">LinkedIn</a>
+                                <a class="btn btn-link" href="/login/google">Google</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
