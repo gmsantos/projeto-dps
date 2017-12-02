@@ -40,7 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 Auth::routes();
 
 Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider')
+    ->name('oauth')
     ->where('provider', 'google|facebook|linkedin');
    
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')
+    ->name('oauth.callback')
     ->where('provider', 'google|facebook|linkedin');
