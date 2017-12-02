@@ -27,7 +27,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function accounts(){
+    public function accounts()
+    {
         return $this->hasMany(SocialLoginAccount::class);
+    }
+
+    public function institution()
+    {
+        return $this->hasOne(Institution::class);
+    }
+
+    public function volunteer()
+    {
+        return $this->hasOne(Volunteer::class);
+    }
+
+    public function isAdmin()
+    {
+        return 'admin' === $this->role;
     }
 }
