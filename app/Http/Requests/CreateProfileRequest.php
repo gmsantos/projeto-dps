@@ -24,7 +24,11 @@ class CreateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'role' => 'required|in:institution,volunteer',
+            'address' => 'required_if:role,institution',
+            'city' => 'required_if:role,institution',
+            'address' => 'required_if:role,institution',
+            'phone' => 'required_if:role,volunteer',
         ];
     }
 }
