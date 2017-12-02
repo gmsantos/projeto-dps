@@ -65,8 +65,8 @@
                             </div>
                             <div class="col-md-8 col-md-offset-4">
                             <a class="btn btn-primary" href="{{ route('oauth', 'facebook')}}">Facebook</a>
-                            <a class="btn btn-info" href="{{ route('oauth', linkedin) }}">LinkedIn</a>
-                            <a class="btn btn-danger" href="{{ route('oauth', google) }}">Google</a>
+                            <a class="btn btn-info" href="{{ route('oauth', 'linkedin') }}">LinkedIn</a>
+                            <a class="btn btn-danger" href="{{ route('oauth', 'google') }}">Google</a>
                             </div>
                         </div>
                     </form>
