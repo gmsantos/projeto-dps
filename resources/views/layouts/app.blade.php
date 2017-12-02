@@ -11,9 +11,7 @@
   
     <title>@yield('title', 'Voluntarios')</title>
 
-    @push('style')
-      <link href="/css/app.css" rel="stylesheet">
-    @endpush
+    <link href="/css/app.css" rel="stylesheet">
     
     @stack('style')
 
@@ -35,16 +33,15 @@
       @endif
         
       @yield('content')
+      
     </div><!-- /.content -->
 
-    @push('scripts')
-      <script src="/js/jquery.min.js"></script>
-      <script src="/js/bootstrap.min.js"></script>
-      <script>
-        var laravel_token = '{{ csrf_token() }}';
-      </script>
-      <script src="/js/restfulizer.js"></script>
-    @endpush
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+      var laravel_token = '{{ csrf_token() }}';
+    </script>
+    <script src="/js/restfulizer.js"></script>
     
     @stack('scripts')
     

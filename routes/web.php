@@ -24,15 +24,23 @@ Route::group(['namespace' => 'Institucional', 'prefix' => 'institucional'], func
 
 });
 
-Route::resource('volunteer', 'VolunteersController');
-Route::resource('cause', 'CausesController');
-Route::resource('institution', 'InstitutionsController');
+Route::get('home', 'HomeController@index')->name('home')->middleware('hasRole');
+
+Route::get('profile/new', 'ProfileController@newProfile')->name('profile.new');
+Route::post('profile/create', 'ProfileController@createProfile')->name('profile.create');
+Route::get('institution/{institution}', 'ProfileController@institutionProfile')->name('profile.institution');
+Route::get('volunteer/{volunteer}', 'ProfileController@volunteerProfile')->name('profile.volunteer');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::resource('volunteer', 'VolunteersController');
+    Route::resource('cause', 'CausesController');
+    Route::resource('institution', 'InstitutionsController');
+});
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider')
     ->where('provider', 'google|facebook|linkedin');
-    
+   
 Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')
     ->where('provider', 'google|facebook|linkedin');
